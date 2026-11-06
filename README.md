@@ -1,4 +1,6 @@
-# ApexSignal B2B Lead, Email MX & ATS Job Intelligence MCP Suite
+# @apexsignal B2B Intelligence MCP  n8n Suite
+
+[![Burapa-J/apexsignal-b2b-mcp-suite MCP server](https://glama.ai/mcp/servers/Burapa-J/apexsignal-b2b-mcp-suite/badges/score.svg)](https://glama.ai/mcp/servers/Burapa-J/apexsignal-b2b-mcp-suite)
 
 Sub-2-second **Model Context Protocol (MCP)** tools and **n8n automation workflows** powered by the [`@apexsignal`](https://apify.com/apexsignal) B2B Intelligence Suite on Apify Store.
 

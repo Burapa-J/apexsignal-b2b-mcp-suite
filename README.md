@@ -20,6 +20,14 @@ Built for AI Agents (**Claude Code**, **Claude Desktop**, **Cursor**, **Windsurf
 
 ---
 
+## Install as an Agent Skill (`SKILL.md` on Agensi.io — Free)
+
+You can also install the **B2B Hiring Intent & Lead Enrichment Pipeline (`SKILL.md`)** and our **AI Engineering & Token Efficiency Pro Suite** (`devguard`, `token-budget-architect`, `cloud-gpu-breakeven-auditor`, `swiss-minimal-ui-ledger`) directly into Claude Code, Cursor, Codex CLI, or Copilot via **Agensi.io**:
+
+- **Agensi Creator Storefront (Free B2B MCP Skills + Pro Coding Agent Suite):** [https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=github](https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=github)
+
+---
+
 ## Quickstart: Connect to Claude Code / Claude Desktop / Cursor / Windsurf (MCP)
 
 ### Option A: Hosted Streamable HTTP via `mcp.apify.com` (OAuth / Zero-Install)
@@ -62,7 +70,7 @@ Add to your `claude_desktop_config.json` or `.cursor/mcp.json`:
 ## Ready-to-Import n8n Workflow & Agent `SKILL.md`
 
 - **n8n Workflow:** Download [`n8n-b2b-hiring-intent-workflow.json`](./n8n-b2b-hiring-intent-workflow.json) and click **Import from File** in n8n to run the 4-stage B2B Hiring-Intent & Executive Email Enrichment Pipeline automatically.
-- **Universal Agent Skill (`SKILL.md`):** Use [`SKILL.md`](./SKILL.md) (also available on [Agensi.io](https://www.agensi.io)) to give Claude Code, Cursor, or Codex CLI an end-to-end B2B outbound prospecting and lead-scoring playbook.
+- **Universal Agent Skill (`SKILL.md`):** Use [`SKILL.md`](./SKILL.md) or install with 1 click on [Agensi.io (`@burapa`)](https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=github).
 
 ## License
 

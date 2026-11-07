@@ -8,23 +8,24 @@ Built for AI Agents (**Claude Code**, **Claude Desktop**, **Cursor**, **Windsurf
 
 ---
 
-## Live MCP Tools & Apify Store Endpoints (5 Actors)
+## Live MCP Tools, Apify Store Endpoints & 1-Click Free `SKILL.md` (5 Actors)
 
-| Tool / Actor | Description | Pricing (Pay-Per-Event) | Apify Store URL |
-|---|---|---|---|
-| **[B2B Hiring Intent & Executive Lead Pipeline (All-in-One MCP)](https://apify.com/apexsignal/b2b-hiring-intent-lead-pipeline)** | **One-Call Composite Pipeline:** Combines live Greenhouse/Lever/Ashby job signals, DNS/MX/SPF/DMARC & tech stack enrichment, and MX-verified executive email discovery with a `0–100` `outboundReadinessScore`. | `$0.0045` / company (`$0.00315` Gold–Diamond) | https://apify.com/apexsignal/b2b-hiring-intent-lead-pipeline |
-| **[B2B Domain Contact, MX & Tech Stack Enricher](https://apify.com/apexsignal/b2b-domain-contact-enricher)** | Extracts verified emails, social links (`LinkedIn`, `X`, `GitHub`), DNS/MX email provider (`Google Workspace`, `Microsoft 365`), and tech stack from company domains in `<2s`. | `$0.0020` / domain (`$0.0014` Gold–Diamond) | https://apify.com/apexsignal/b2b-domain-contact-enricher |
-| **[Bulk Email Verifier — DNS MX & Disposable Check](https://apify.com/apexsignal/bulk-email-mx-verifier)** | High-speed bulk email verification via RFC syntax, deduplicated DNS MX lookup, disposable domain detection, and role-account scoring (`0–100`). | `$0.0006` / email (`$0.00042` Gold–Diamond) | https://apify.com/apexsignal/bulk-email-mx-verifier |
-| **[ATS Career Job Listing API — Greenhouse, Lever & Ashby](https://apify.com/apexsignal/ats-career-job-listing-api)** | Unified JSON feed of active job openings directly from Greenhouse, Lever, and Ashby career portals for B2B hiring-intent signals. | `$0.0012` / job (`$0.00084` Gold–Diamond) | https://apify.com/apexsignal/ats-career-job-listing-api |
-| **[B2B Company & Decision Maker Lead Finder](https://apify.com/apexsignal/b2b-company-lead-finder)** | Infers corporate email naming patterns (`{first}.{last}@domain`) and generates MX-verified executive email leads directly from company domains. | `$0.0025` / lead (`$0.00175` Gold–Diamond) | https://apify.com/apexsignal/b2b-company-lead-finder |
+| Tool / Actor | Description | Pricing (Pay-Per-Event) | 1-Click Free `SKILL.md` (Agensi.io) | Apify Store URL |
+|---|---|---|---|---|
+| **[B2B Hiring Intent & Executive Lead Pipeline (All-in-One MCP)](https://apify.com/apexsignal/b2b-hiring-intent-lead-pipeline)** | **One-Call Composite Pipeline:** Combines live Greenhouse/Lever/Ashby job signals, DNS/MX/SPF/DMARC & tech stack enrichment, and MX-verified executive email discovery with a `0–100` `outboundReadinessScore`. | `$0.0045` / company (`$0.00315` Gold–Diamond) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/b2b-hiring-intent-lead-enrichment-pipeline-mcp&utm_source=github)** | https://apify.com/apexsignal/b2b-hiring-intent-lead-pipeline |
+| **[B2B Domain Contact, MX & Tech Stack Enricher](https://apify.com/apexsignal/b2b-domain-contact-enricher)** | Extracts verified emails, social links (`LinkedIn`, `X`, `GitHub`), DNS/MX email provider (`Google Workspace`, `Microsoft 365`), and tech stack from company domains in `<2s`. | `$0.0020` / domain (`$0.0014` Gold–Diamond) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/b2b-domain-contact-dns-mx-tech-stack-enricher-mcp&utm_source=github)** | https://apify.com/apexsignal/b2b-domain-contact-enricher |
+| **[Bulk Email Verifier — DNS MX & Disposable Check](https://apify.com/apexsignal/bulk-email-mx-verifier)** | High-speed bulk email verification via RFC syntax, deduplicated DNS MX lookup, disposable domain detection, and role-account scoring (`0–100`). | `$0.0006` / email (`$0.00042` Gold–Diamond) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/bulk-corporate-email-mx-deliverability-verifier-mcp&utm_source=github)** | https://apify.com/apexsignal/bulk-email-mx-verifier |
+| **[ATS Career Job Listing API — Greenhouse, Lever & Ashby](https://apify.com/apexsignal/ats-career-job-listing-api)** | Unified JSON feed of active job openings directly from Greenhouse, Lever, and Ashby career portals for B2B hiring-intent signals. | `$0.0012` / job (`$0.00084` Gold–Diamond) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/tech-career-ats-job-scraper-greenhouse-lever-ashby-mcp&utm_source=github)** | https://apify.com/apexsignal/ats-career-job-listing-api |
+| **[B2B Company & Decision Maker Lead Finder](https://apify.com/apexsignal/b2b-company-lead-finder)** | Infers corporate email naming patterns (`{first}.{last}@domain`) and generates MX-verified executive email leads directly from company domains. | `$0.0025` / lead (`$0.00175` Gold–Diamond) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/b2b-executive-decision-maker-email-lead-finder-mcp&utm_source=github)** | https://apify.com/apexsignal/b2b-company-lead-finder |
 
 ---
 
-## Install as an Agent Skill (`SKILL.md` on Agensi.io — Free)
+## Install as an Agent Skill (`SKILL.md` on Agensi.io — 5 Free Skills + Pro Engineering Bundle)
 
-You can also install the **B2B Hiring Intent & Lead Enrichment Pipeline (`SKILL.md`)** and our **AI Engineering & Token Efficiency Pro Suite** (`devguard`, `token-budget-architect`, `cloud-gpu-breakeven-auditor`, `swiss-minimal-ui-ledger`) directly into Claude Code, Cursor, Codex CLI, or Copilot via **Agensi.io**:
+Install any of the **5 Free B2B MCP Skills** above or our **4-in-1 AI Engineering & Token Efficiency Pro Suite** (`devguard`, `token-budget-architect`, `cloud-gpu-breakeven-auditor`, `swiss-minimal-ui-ledger` — `$49`, Save 36%) directly into Claude Code, Cursor, Codex CLI, Windsurf, or Copilot via **Agensi.io**:
 
-- **Agensi Creator Storefront (Free B2B MCP Skills + Pro Coding Agent Suite):** [https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=github](https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=github)
+- **Agensi Creator Storefront (All 9 Live Skills):** [https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=github](https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=github)
+- **4-in-1 AI Engineering & Token Efficiency Pro Bundle (`$49`, Save 36%):** [https://www.agensi.io/r/BURAPA?to=/bundles/ai-engineering-token-efficiency-pro-suite&utm_source=github](https://www.agensi.io/r/BURAPA?to=/bundles/ai-engineering-token-efficiency-pro-suite&utm_source=github)
 
 ---
 

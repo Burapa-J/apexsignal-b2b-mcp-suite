@@ -1,7 +1,7 @@
 {
   "name": "apexsignal-b2b-mcp-suite",
-  "version": "1.0.0",
-  "description": "MCP Server for B2B Domain Contact Enrichment, Bulk Email DNS MX Verification, ATS Career Job Listings (Greenhouse/Lever/Ashby), and Executive Lead Finding via @apexsignal on Apify.",
+  "version": "1.1.0",
+  "description": "MCP Server for All-in-One B2B Hiring Intent & Lead Pipeline, Domain Contact Enrichment, Bulk Email DNS MX Verification, ATS Career Job Listings (Greenhouse/Lever/Ashby), and Executive Lead Finding via @apexsignal on Apify.",
   "type": "module",
   "bin": {
     "apexsignal-b2b-mcp": "./index.mjs"
@@ -15,11 +15,13 @@
     "model-context-protocol",
     "apify",
     "b2b-leads",
+    "hiring-intent",
     "email-verifier",
     "greenhouse",
     "lever",
     "ashby",
-    "n8n"
+    "n8n",
+    "skill-md"
   ],
   "author": "Burapa Jaiwat (@apexsignal)",
   "license": "MIT"

@@ -2,14 +2,14 @@
   "hostedOAuthMcpConfig": {
     "mcpServers": {
       "apexsignal-b2b-suite": {
-        "url": "https://mcp.apify.com?tools=apexsignal/b2b-domain-contact-enricher,apexsignal/bulk-email-mx-verifier,apexsignal/ats-career-job-listing-api,apexsignal/b2b-company-lead-finder"
+        "url": "https://mcp.apify.com/?actors=apexsignal/b2b-hiring-intent-lead-pipeline,apexsignal/b2b-domain-contact-enricher,apexsignal/bulk-email-mx-verifier,apexsignal/ats-career-job-listing-api,apexsignal/b2b-company-lead-finder"
       }
     }
   },
   "hostedBearerTokenMcpConfig": {
     "mcpServers": {
       "apexsignal-b2b-suite": {
-        "url": "https://mcp.apify.com?tools=apexsignal/b2b-domain-contact-enricher,apexsignal/bulk-email-mx-verifier,apexsignal/ats-career-job-listing-api,apexsignal/b2b-company-lead-finder",
+        "url": "https://mcp.apify.com/?actors=apexsignal/b2b-hiring-intent-lead-pipeline,apexsignal/b2b-domain-contact-enricher,apexsignal/bulk-email-mx-verifier,apexsignal/ats-career-job-listing-api,apexsignal/b2b-company-lead-finder",
         "headers": {
           "Authorization": "Bearer <YOUR_APIFY_TOKEN>"
         }
@@ -24,7 +24,7 @@
           "-y",
           "@apify/actors-mcp-server@latest",
           "--tools",
-          "apexsignal/b2b-domain-contact-enricher,apexsignal/bulk-email-mx-verifier,apexsignal/ats-career-job-listing-api,apexsignal/b2b-company-lead-finder"
+          "apexsignal/b2b-hiring-intent-lead-pipeline,apexsignal/b2b-domain-contact-enricher,apexsignal/bulk-email-mx-verifier,apexsignal/ats-career-job-listing-api,apexsignal/b2b-company-lead-finder"
         ],
         "env": {
           "APIFY_TOKEN": "<YOUR_APIFY_TOKEN>"

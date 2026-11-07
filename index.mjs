@@ -3,6 +3,45 @@ import readline from "node:readline";
 
 const TOOLS = [
   {
+    name: "run_b2b_hiring_intent_lead_pipeline",
+    actor: "apexsignal~b2b-hiring-intent-lead-pipeline",
+    description: "Run the All-in-One Composite B2B Pipeline: fetch live Greenhouse/Lever/Ashby hiring signals, enrich company domain (DNS/MX/SPF/DMARC & tech stack), discover MX-verified executive emails, and compute an outboundReadinessScore (0-100) in one call.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        targets: {
+          type: "array",
+          description: "Target companies to enrich end-to-end",
+          items: {
+            type: "object",
+            properties: {
+              domain: { type: "string", description: "Company domain (e.g. \"cloudflare.com\")" },
+              companyName: { type: "string" },
+              atsBoard: { type: "string", description: "ATS board target (e.g. \"greenhouse:cloudflare\")" },
+              executives: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    fullName: { type: "string" },
+                    role: { type: "string" }
+                  },
+                  required: ["fullName"]
+                }
+              }
+            },
+            required: ["domain"]
+          }
+        },
+        departmentFilter: { type: "string" },
+        keywordFilter: { type: "string" },
+        remoteOnly: { type: "boolean", default: false },
+        maxItems: { type: "integer", default: 10 }
+      },
+      required: ["targets"]
+    }
+  },
+  {
     name: "enrich_b2b_domain",
     actor: "apexsignal~b2b-domain-contact-enricher",
     description: "Extract verified B2B emails, social links, DNS MX email provider, and tech stack from company domains.",
@@ -105,7 +144,7 @@ rl.on("line", async (line) => {
         result: {
           protocolVersion: "2024-11-05",
           capabilities: { tools: {} },
-          serverInfo: { name: "apexsignal-b2b-mcp-suite", version: "1.0.0" }
+          serverInfo: { name: "apexsignal-b2b-mcp-suite", version: "1.1.0" }
         }
       }) + "\n");
     } else if (method === "tools/list") {

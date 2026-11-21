@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Burapa-J/apexsignal-b2b-mcp-suite",
+  "title": "ApexSignal B2B Lead, Email MX & ATS Job Suite",
+  "description": "6 B2B MCP tools: hiring intent, work email finder ($1/1k), bulk MX check, domain & ATS jobs.",
+  "websiteUrl": "https://burapa-j.github.io/apexsignal-b2b-mcp-suite/",
+  "repository": {
+    "url": "https://github.com/Burapa-J/apexsignal-b2b-mcp-suite",
+    "source": "github"
+  },
+  "version": "1.3.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?actors=apexsignal/b2b-hiring-intent-lead-pipeline,apexsignal/b2b-work-email-finder,apexsignal/b2b-domain-contact-enricher,apexsignal/bulk-email-mx-verifier,apexsignal/ats-career-job-listing-api,apexsignal/b2b-company-lead-finder"
+    }
+  ]
+}

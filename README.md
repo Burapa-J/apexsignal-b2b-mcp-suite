@@ -1,20 +1,25 @@
-# @apexsignal B2B Intelligence MCP & n8n Suite (v1.2.0 — Instant Zero-Token Mode + Cloud Scale)
+# @apexsignal B2B Intelligence MCP & n8n Suite (v1.3.0 — 6 Live Tools + Browser Demo)
 
 [![Burapa-J/apexsignal-b2b-mcp-suite MCP server](https://glama.ai/mcp/servers/Burapa-J/apexsignal-b2b-mcp-suite/badges/score.svg)](https://glama.ai/mcp/servers/Burapa-J/apexsignal-b2b-mcp-suite)
 
+- **Try Instant Browser Demo (No Signup / No API Key):** **[https://burapa-j.github.io/apexsignal-b2b-mcp-suite/](https://burapa-j.github.io/apexsignal-b2b-mcp-suite/)**
+
 Sub-2-second **Model Context Protocol (MCP)** tools, **`SKILL.md` Agent Playbook**, and **n8n automation workflows** powered by the [`@apexsignal`](https://apify.com/apexsignal) B2B Intelligence Suite on Apify Store.
 
-### What's New in v1.2.0
-1. **Works Out-of-the-Box with ZERO API Key (`ZERO_TOKEN_LOCAL_TRIAL`):** Clone or run `npx` and test any of the 5 tools immediately on up to 5 companies/emails with zero signup. Set `APIFY_TOKEN` whenever you want 10,000-item cloud batch scale.
-2. **Domain-Only Auto-Discovery:** Pass just a bare company domain (e.g. `"linear.app"` or `"cloudflare.com"`) — no need to know ATS slugs (`greenhouse:`/`lever:`/`ashby:`) or executive names in advance. Both open ATS job boards and named executives (CEO, Founder, CTO, VP) are auto-discovered.
+### What's New in v1.3.0
+1. **Interactive Live Browser Scanner:** Test any domain + executive name or bulk email list instantly at [https://burapa-j.github.io/apexsignal-b2b-mcp-suite/](https://burapa-j.github.io/apexsignal-b2b-mcp-suite/).
+2. **6th Tool — Work Email Finder (`Name + Domain -> Verified Email` at `$1.00/1k`):** `apexsignal/b2b-work-email-finder` (`8x` cheaper than legacy Email Finder APIs; dead domains cost `$0`).
+3. **Works Out-of-the-Box with ZERO API Key (`ZERO_TOKEN_LOCAL_TRIAL`):** Clone or run `npx` and test any of the 6 tools immediately on up to 5 companies/emails with zero signup. Set `APIFY_TOKEN` whenever you want 10,000-item cloud batch scale.
+4. **Domain-Only Auto-Discovery:** Pass just a bare company domain (e.g. `"linear.app"` or `"cloudflare.com"`) — open ATS job boards and named executives (CEO, Founder, CTO, VP) are auto-discovered.
 
 ---
 
-## Live MCP Tools, Apify Store Endpoints & 1-Click Free `SKILL.md` (5 Actors)
+## Live MCP Tools, Apify Store Endpoints & 1-Click Free `SKILL.md` (6 Actors)
 
 | Tool / Actor | Zero-Friction Capability | Pricing (Pay-Per-Event) | 1-Click Free `SKILL.md` (Agensi.io) | Apify Store URL |
 |---|---|---|---|---|
 | **[B2B Hiring Intent, ATS Jobs & Executive Email Pipeline (MCP)](https://apify.com/apexsignal/b2b-hiring-intent-lead-pipeline)** | **One-Call Composite Pipeline from 1 Domain:** Auto-discovers Greenhouse/Lever/Ashby open jobs, DNS MX/SPF/DMARC & tech stack, and MX-verified executive emails with a `0–100` `outboundReadinessScore`. | `$0.0045` / dossier (`$0.00315` Gold–Diamond; dead domains `$0`) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/b2b-hiring-intent-lead-enrichment-pipeline-mcp&utm_source=github)** | https://apify.com/apexsignal/b2b-hiring-intent-lead-pipeline |
+| **[Work Email Finder — Name + Domain to Verified Email ($1/1k)](https://apify.com/apexsignal/b2b-work-email-finder)** | Turn Full Name (or pasted CSV `Name, Domain`) into pattern-matched, DNS MX/SPF/DMARC-verified corporate emails with `0–98` confidence score. | `$0.0010` / email (`$0.70–$1.00/1k`; dead domains `$0`) | **[Try Live Scanner](https://burapa-j.github.io/apexsignal-b2b-mcp-suite/)** | https://apify.com/apexsignal/b2b-work-email-finder |
 | **[B2B Domain Contact, MX & Tech Stack Enricher — $2/1k](https://apify.com/apexsignal/b2b-domain-contact-enricher)** | Extracts verified emails, phones, social links (`LinkedIn`, `X`, `GitHub`), DNS MX/SPF/DMARC posture, and tech stack from company domains in `<2s`. | `$0.0020` / domain (`$0.0014` Gold–Diamond) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/b2b-domain-contact-dns-mx-tech-stack-enricher-mcp&utm_source=github)** | https://apify.com/apexsignal/b2b-domain-contact-enricher |
 | **[Bulk Email Verifier & MX/DMARC Check — $0.60/1k](https://apify.com/apexsignal/bulk-email-mx-verifier)** | High-speed bulk email verification via RFC syntax, deduplicated DNS MX lookup, disposable domain detection, and role-account scoring (`0–100`). | `$0.0006` / email (`$0.42–$0.60/1k`, duplicates free) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/bulk-corporate-email-mx-deliverability-verifier-mcp&utm_source=github)** | https://apify.com/apexsignal/bulk-email-mx-verifier |
 | **[Career Page & ATS Job Scraper by Domain](https://apify.com/apexsignal/ats-career-job-listing-api)** | Give any company domain (`linear.app`, `cloudflare.com`) and auto-discover live open roles across Greenhouse, Lever, and Ashby career APIs. | `$0.0012` / job (`$0.00084` Gold–Diamond) | **[Install Free Skill](https://www.agensi.io/r/BURAPA?to=/skills/tech-career-ats-job-scraper-greenhouse-lever-ashby-mcp&utm_source=github)** | https://apify.com/apexsignal/ats-career-job-listing-api |

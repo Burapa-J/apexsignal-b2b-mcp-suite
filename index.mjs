@@ -132,6 +132,35 @@ const TOOLS = [
       },
       required: ["domains"]
     }
+  },
+  {
+    name: "find_work_email_by_name_domain",
+    actor: "apexsignal~b2b-work-email-finder",
+    description:
+      "Turn Full Name (or First + Last Name) + Company Domain into a pattern-matched, DNS MX/SPF/DMARC-verified B2B work email with ranked alternatives ($1.00/1k on Apify Cloud; instant local mode <=5 leads).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        leads: {
+          type: "array",
+          description: "List of { fullName, domain, role? } prospects",
+          items: {
+            type: "object",
+            properties: {
+              fullName: { type: "string" },
+              domain: { type: "string" },
+              role: { type: "string" }
+            },
+            required: ["fullName", "domain"]
+          }
+        },
+        csv: {
+          type: "string",
+          description: "Optional pasted CSV lines ('Karri Saarinen, linear.app')"
+        },
+        maxItems: { type: "integer", default: 25 }
+      }
+    }
   }
 ];
 
@@ -264,6 +293,20 @@ async function runZeroTokenLocalFallback(toolName, args = {}) {
     }
     return { mode: "ZERO_TOKEN_LOCAL_TRIAL", note: scaleNote, items };
   }
+  if (toolName === "find_work_email_by_name_domain") {
+    const rawLeads = Array.isArray(args.leads) ? args.leads : (args.fullName && args.domain ? [{ fullName: args.fullName, domain: args.domain, role: args.role }] : []);
+    const items = [];
+    for (const l of rawLeads.slice(0, FREE_LOCAL_TRIAL_CAP)) {
+      const dom = normalizeDomain(l.domain);
+      if (!dom) continue;
+      const enriched = await localEnrichDomain(dom);
+      const parts = String(l.fullName ?? "").trim().toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/).filter(Boolean);
+      const f = parts[0] ?? "contact", last = parts.length > 1 ? parts[parts.length - 1] : "";
+      const cands = last ? [`${f}.${last}@${dom}`, `${f}@${dom}`, `${f[0]}${last}@${dom}`] : [`${f}@${dom}`];
+      items.push({ fullName: l.fullName, domain: dom, recommendedEmail: cands[0], alternativeEmails: cands.slice(1), mxValid: enriched.mxValid, emailProvider: enriched.emailProvider, spfValid: enriched.spfValid, dmarcPolicy: enriched.dmarcPolicy });
+    }
+    return { mode: "ZERO_TOKEN_LOCAL_TRIAL", note: scaleNote, items };
+  }
   if (toolName === "fetch_ats_career_jobs") {
     const targets = (args.targets ?? args.boards ?? (args.domain ? [args.domain] : ["cloudflare.com"])).slice(0, FREE_LOCAL_TRIAL_CAP);
     const items = [];
@@ -346,7 +389,7 @@ rl.on("line", async (line) => {
         result: {
           protocolVersion: "2024-11-05",
           capabilities: { tools: {} },
-          serverInfo: { name: "apexsignal-b2b-mcp-suite", version: "1.2.0" }
+          serverInfo: { name: "apexsignal-b2b-mcp-suite", version: "1.3.0" }
         }
       }) + "\n");
     } else if (method === "notifications/initialized") {

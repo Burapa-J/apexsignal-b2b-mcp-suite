@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ApexSignal — Free Live B2B Hiring Intent, ATS Jobs & Work Email Verifier</title>
+  <meta name="description" content="Instant browser-based B2B domain intelligence: check live Greenhouse/Lever/Ashby open roles, DNS MX/SPF/DMARC posture, and verified work email patterns in <1.5s. Powered by @apexsignal MCP & Apify Suite." />
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --border: #e5e5e7;
+      --text: #111113;
+      --muted: #636369;
+      --accent: #0f172a;
+      --green: #067647;
+      --green-bg: #ecfdf3;
+      --amber: #b54708;
+      --amber-bg: #fffaeb;
+      --blue: #175cd3;
+      --blue-bg: #eff8ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-variant-numeric: tabular-nums;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 32px 20px 72px; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 32px;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .brand { font-weight: 700; font-size: 16px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; display: inline-block; }
+    .nav-links { display: flex; gap: 14px; font-size: 13px; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
+    .nav-links a:hover { color: var(--text); }
+    h1 { font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.03em; margin: 0 0 10px; line-height: 1.15; }
+    .lead { color: var(--muted); font-size: 16px; max-width: 700px; margin: 0 0 24px; }
+    .tabs { display: inline-flex; background: #ededf0; padding: 4px; border-radius: 10px; margin-bottom: 20px; gap: 4px; }
+    .tab {
+      border: 0; background: transparent; padding: 8px 16px; border-radius: 7px;
+      font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer;
+    }
+    .tab.active { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; margin-bottom: 20px;
+    }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    input[type="text"], textarea {
+      flex: 1; min-width: 220px; padding: 11px 14px; border: 1px solid var(--border);
+      border-radius: 9px; font-size: 14px; font-family: inherit; outline: none; background: #fff;
+    }
+    input[type="text"]:focus, textarea:focus { border-color: var(--accent); }
+    .btn {
+      background: var(--accent); color: #fff; border: 0; border-radius: 9px;
+      padding: 11px 18px; font-size: 14px; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn:hover { opacity: 0.92; }
+    .btn-outline {
+      background: #fff; color: var(--text); border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: #f4f4f6; }
+    .pills { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+    .pill {
+      border: 1px solid var(--border); background: #fafafa; padding: 4px 10px;
+      border-radius: 999px; cursor: pointer; font-size: 12px; color: var(--text); font-weight: 500;
+    }
+    .pill:hover { background: #eeeef2; }
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; margin: 18px 0; }
+    .metric { border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: #fcfcfd; }
+    .metric-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; }
+    .metric-val { font-size: 20px; font-weight: 700; margin-top: 4px; letter-spacing: -0.02em; }
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600;
+    }
+    .badge-ok { background: var(--green-bg); color: var(--green); }
+    .badge-warn { background: var(--amber-bg); color: var(--amber); }
+    .badge-info { background: var(--blue-bg); color: var(--blue); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+    th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 24px; }
+    .cta-box { border: 1px solid var(--border); border-radius: 12px; padding: 18px; background: var(--surface); display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
+    .cta-box h3 { margin: 0 0 4px; font-size: 15px; letter-spacing: -0.01em; }
+    .cta-box p { margin: 0; font-size: 13px; color: var(--muted); }
+    code { background: #f1f1f4; padding: 2px 6px; border-radius: 5px; font-size: 12px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="dot"></span> ApexSignal B2B Intelligence</div>
+      <nav class="nav-links">
+        <a href="https://apify.com/apexsignal" target="_blank" rel="noopener">Apify Store (6 Actors)</a>
+        <a href="https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=livedemo" target="_blank" rel="noopener">Agensi Skills (5 Free + Pro Bundles)</a>
+        <a href="https://github.com/Burapa-J/apexsignal-b2b-mcp-suite" target="_blank" rel="noopener">GitHub MCP v1.3</a>
+      </nav>
+    </header>
+
+    <h1>Instant B2B Hiring Intent, Work Email &amp; DNS MX Scanner</h1>
+    <p class="lead">Test live company hiring velocity (Greenhouse, Ashby, Lever), DNS MX/SPF/DMARC security posture, and corporate work email patterns in your browser — zero signup, zero cookies.</p>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('domain', this)">1. Domain + Work Email Scanner</button>
+      <button class="tab" onclick="switchTab('bulk', this)">2. Bulk Email MX Verifier ($0.60/1k)</button>
+    </div>
+
+    <div id="panel-domain" class="card">
+      <div class="row">
+        <input id="inp-domain" type="text" value="linear.app" placeholder="Company domain (e.g. linear.app, cloudflare.com)" />
+        <input id="inp-name" type="text" value="Karri Saarinen" placeholder="Optional Full Name (e.g. Karri Saarinen)" />
+        <button class="btn" id="btn-scan" onclick="runDomainScan()">Scan Live &rarr;</button>
+      </div>
+      <div class="pills">
+        <span>Try 1-click preset:</span>
+        <button class="pill" onclick="fillPreset('linear.app','Karri Saarinen')">linear.app + Karri Saarinen</button>
+        <button class="pill" onclick="fillPreset('cloudflare.com','Matthew Prince')">cloudflare.com + Matthew Prince</button>
+        <button class="pill" onclick="fillPreset('stripe.com','Patrick Collison')">stripe.com + Patrick Collison</button>
+      </div>
+      <div id="domain-result" style="margin-top:18px;"></div>
+    </div>
+
+    <div id="panel-bulk" class="card hidden">
+      <div style="margin-bottom:10px;font-size:13px;color:var(--muted);">Paste up to 10 email addresses (comma or newline separated) for instant DNS MX, disposable, and role-account scoring:</div>
+      <textarea id="inp-emails" rows="4">karri.saarinen@linear.app
+support@cloudflare.com
+test@mailinator.com
+invalid@nonexistent-dead-domain-999.xyz</textarea>
+      <div style="margin-top:10px;">
+        <button class="btn" onclick="runBulkVerify()">Verify Emails Live &rarr;</button>
+      </div>
+      <div id="bulk-result" style="margin-top:18px;"></div>
+    </div>
+
+    <div class="cta-grid">
+      <div class="cta-box">
+        <div>
+          <span class="badge badge-info">Scale to 10,000+ Domains</span>
+          <h3 style="margin-top:8px;">Run Full Batch on Apify Cloud ($0.60–$2.50/1k)</h3>
+          <p>Auto-discovers CEO/Founder/VP names from company pages + JSON-LD and extracts all open ATS jobs. Works inside Apify's free $5/mo credit.</p>
+        </div>
+        <div class="row">
+          <a class="btn" href="https://apify.com/apexsignal/b2b-hiring-intent-lead-pipeline" target="_blank" rel="noopener">All-in-One Pipeline &rarr;</a>
+          <a class="btn btn-outline" href="https://apify.com/apexsignal/b2b-work-email-finder" target="_blank" rel="noopener">Work Email Finder ($1/1k)</a>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <div>
+          <span class="badge badge-ok">Claude Code · Cursor · Codex · Windsurf</span>
+          <h3 style="margin-top:8px;">1-Click Free B2B MCP Skills + 74% Off Pro Suite</h3>
+          <p>Install all 5 Free B2B MCP Skills or unlock the Complete 7-Skill AI Coding Agent Engineering Suite ($35 vs $133 — Save 74%).</p>
+        </div>
+        <div class="row">
+          <a class="btn" href="https://www.agensi.io/r/BURAPA?to=/bundles/complete-ai-agent-mcp-engineering-suite-all-7-pro-skills&utm_source=livedemo" target="_blank" rel="noopener">All-7 Pro Suite ($35) &rarr;</a>
+          <a class="btn btn-outline" href="https://www.agensi.io/r/BURAPA?to=/creators/burapa&utm_source=livedemo" target="_blank" rel="noopener">5 Free B2B Skills</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DISPOSABLE = new Set(['mailinator.com','guerrillamail.com','10minutemail.com','tempmail.com','yopmail.com','trashmail.com']);
+    const ROLE = new Set(['admin','support','help','info','contact','sales','billing','security','hr','careers','jobs','press','hello','team']);
+
+    function switchTab(which, btn) {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-domain').classList.toggle('hidden', which !== 'domain');
+      document.getElementById('panel-bulk').classList.toggle('hidden', which !== 'bulk');
+    }
+
+    function fillPreset(dom, name) {
+      document.getElementById('inp-domain').value = dom;
+      document.getElementById('inp-name').value = name;
+      runDomainScan();
+    }
+
+    function cleanDomain(raw) {
+      return (raw || '').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split('/')[0].split('?')[0];
+    }
+
+    async function dohQuery(name, type) {
+      try {
+        const r = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(name)}&type=${type}`);
+        if (!r.ok) return [];
+        const j = await r.json();
+        return (j.Answer || []).map(a => String(a.data || '').replace(/^"|"$/g, ''));
+      } catch { return []; }
+    }
+
+    function classifyMx(records) {
+      const s = records.join(' ').toLowerCase();
+      if (!s) return 'None / No MX';
+      if (s.includes('google')) return 'Google Workspace';
+      if (s.includes('outlook.com')) return 'Microsoft 365';
+      if (s.includes('pphosted') || s.includes('proofpoint')) return 'Proofpoint Enterprise';
+      if (s.includes('mimecast')) return 'Mimecast';
+      if (s.includes('proton')) return 'Proton Mail';
+      return 'Custom MX';
+    }
+
+    async function probeAtsJobs(domain) {
+      const slug = domain.split('.')[0];
+      const tries = [
+        async () => {
+          const r = await fetch(`https://api.ashbyhq.com/posting-api/job-board/${encodeURIComponent(slug)}`);
+          if (!r.ok) return null;
+          const j = await r.json();
+          if (!Array.isArray(j.jobs) || !j.jobs.length) return null;
+          return { provider: 'Ashby', total: j.jobs.length, jobs: j.jobs.slice(0, 5).map(x => ({ title: x.title, dept: x.department || 'General', loc: x.location || 'Remote', url: x.jobUrl })) };
+        },
+        async () => {
+          const r = await fetch(`https://boards-api.greenhouse.io/v1/boards/${encodeURIComponent(slug)}/jobs`);
+          if (!r.ok) return null;
+          const j = await r.json();
+          if (!Array.isArray(j.jobs) || !j.jobs.length) return null;
+          return { provider: 'Greenhouse', total: j.jobs.length, jobs: j.jobs.slice(0, 5).map(x => ({ title: x.title, dept: (x.departments && x.departments[0] && x.departments[0].name) || 'General', loc: (x.location && x.location.name) || 'Global', url: x.absolute_url })) };
+        },
+        async () => {
+          const r = await fetch(`https://api.lever.co/v0/postings/${encodeURIComponent(slug)}?mode=json`);
+          if (!r.ok) return null;
+          const arr = await r.json();
+          if (!Array.isArray(arr) || !arr.length) return null;
+          return { provider: 'Lever', total: arr.length, jobs: arr.slice(0, 5).map(x => ({ title: x.text, dept: (x.categories && x.categories.department) || 'General', loc: (x.categories && x.categories.location) || 'Global', url: x.hostedUrl })) };
+        }
+      ];
+      for (const fn of tries) {
+        try { const res = await fn(); if (res) return res; } catch {}
+      }
+      return { provider: 'None detected on default slug', total: 0, jobs: [] };
+    }
+
+    function permuteEmails(fullName, domain) {
+      const parts = (fullName || '').trim().toLowerCase().replace(/[^a-z\s-]/g, '').split(/\s+/).filter(Boolean);
+      if (!parts.length) return [];
+      const f = parts[0], l = parts.length > 1 ? parts[parts.length - 1] : '';
+      if (!l) return [`${f}@${domain}`];
+      return [`${f}.${l}@${domain}`, `${f}@${domain}`, `${f[0]}${l}@${domain}`, `${f}${l}@${domain}`];
+    }
+
+    async function runDomainScan() {
+      const domain = cleanDomain(document.getElementById('inp-domain').value);
+      const fullName = document.getElementById('inp-name').value.trim();
+      const box = document.getElementById('domain-result');
+      if (!domain || !domain.includes('.')) {
+        box.innerHTML = '<span class="badge badge-warn">Please enter a valid company domain (e.g. linear.app)</span>';
+        return;
+      }
+      box.innerHTML = '<div style="font-size:13px;color:var(--muted);">Querying live DNS MX/SPF/DMARC &amp; ATS career endpoints...</div>';
+      const t0 = performance.now();
+      const [mxRaw, txtRaw, dmarcRaw, ats] = await Promise.all([
+        dohQuery(domain, 'MX'),
+        dohQuery(domain, 'TXT'),
+        dohQuery(`_dmarc.${domain}`, 'TXT'),
+        probeAtsJobs(domain)
+      ]);
+      const elapsed = Math.round(performance.now() - t0);
+      const mxValid = mxRaw.length > 0;
+      const provider = classifyMx(mxRaw);
+      const spfValid = txtRaw.some(t => t.toLowerCase().includes('v=spf1'));
+      const dmarcStr = dmarcRaw.find(t => /v=dmarc1/i.test(t)) || '';
+      const dmarcMatch = dmarcStr.match(/\bp=(reject|quarantine|none)\b/i);
+      const dmarcPolicy = dmarcMatch ? dmarcMatch[1].toLowerCase() : 'none-found';
+
+      let score = 0;
+      if (mxValid) score += 40;
+      if (spfValid) score += 15;
+      if (dmarcPolicy === 'reject' || dmarcPolicy === 'quarantine') score += 15;
+      if (ats.total >= 10) score += 30;
+      else if (ats.total >= 1) score += 20;
+
+      const emails = mxValid && fullName ? permuteEmails(fullName, domain) : [];
+      const emailHtml = emails.length ? `
+        <div style="margin-top:16px;padding:14px;border:1px solid var(--border);border-radius:10px;background:#f8fafc;">
+          <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;">Work Email Candidates for ${fullName.replace(/</g,'&lt;')}</div>
+          <div style="margin-top:6px;font-size:15px;font-weight:700;">Recommended: <code>${emails[0]}</code> <span class="badge badge-ok">MX Verified (${provider})</span></div>
+          <div style="margin-top:4px;font-size:12px;color:var(--muted);">Alternatives: ${emails.slice(1).map(e => `<code>${e}</code>`).join(' · ')} — <a href="https://apify.com/apexsignal/b2b-company-lead-finder" target="_blank" rel="noopener">Auto-discover all executives on Apify ($0.0025) &rarr;</a></div>
+        </div>` : '';
+
+      const jobsHtml = ats.jobs.length ? `
+        <div style="margin-top:16px;">
+          <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;">Live Open Roles (${ats.total} total on ${ats.provider} — showing top ${ats.jobs.length})</div>
+          <table>
+            <thead><tr><th>Role</th><th>Department</th><th>Location</th></tr></thead>
+            <tbody>${ats.jobs.map(j => `<tr><td><a href="${j.url}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-weight:500;">${j.title.replace(/</g,'&lt;')}</a></td><td>${j.dept.replace(/</g,'&lt;')}</td><td>${j.loc.replace(/</g,'&lt;')}</td></tr>`).join('')}</tbody>
+          </table>
+        </div>` : `<div style="margin-top:14px;font-size:13px;color:var(--muted);">No public Greenhouse/Ashby/Lever board on default slug — <a href="https://apify.com/apexsignal/ats-career-job-listing-api" target="_blank" rel="noopener">run deep HTML career link discovery on Apify Cloud &rarr;</a></div>`;
+
+      box.innerHTML = `
+        <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Completed live in <strong>${elapsed} ms</strong> for <strong>${domain}</strong></div>
+        <div class="metrics">
+          <div class="metric"><div class="metric-label">Outbound Readiness</div><div class="metric-val">${score} / 100</div></div>
+          <div class="metric"><div class="metric-label">Mail Gateway</div><div class="metric-val" style="font-size:16px;">${provider}</div></div>
+          <div class="metric"><div class="metric-label">SPF / DMARC</div><div class="metric-val" style="font-size:16px;">${spfValid ? 'SPF ✓' : 'No SPF'} · ${dmarcPolicy}</div></div>
+          <div class="metric"><div class="metric-label">Live ATS Roles</div><div class="metric-val">${ats.total} <span style="font-size:12px;font-weight:500;color:var(--muted);">(${ats.provider})</span></div></div>
+        </div>
+        ${emailHtml}
+        ${jobsHtml}
+      `;
+    }
+
+    async function runBulkVerify() {
+      const raw = document.getElementById('inp-emails').value;
+      const list = Array.from(new Set((raw.split(/[\s,;]+/) || []).map(s => s.trim().toLowerCase()).filter(Boolean))).slice(0, 10);
+      const box = document.getElementById('bulk-result');
+      if (!list.length) return;
+      box.innerHTML = '<div style="font-size:13px;color:var(--muted);">Resolving DNS MX records...</div>';
+      const rows = [];
+      for (const email of list) {
+        const parts = email.split('@');
+        const local = (parts[0] || '').split('+')[0];
+        const dom = parts[1] || '';
+        if (!dom || !dom.includes('.')) {
+          rows.push({ email, status: 'UNDELIVERABLE_SYNTAX', score: 0, provider: 'Invalid Syntax' });
+          continue;
+        }
+        if (DISPOSABLE.has(dom)) {
+          rows.push({ email, status: 'UNDELIVERABLE_DISPOSABLE', score: 5, provider: 'Disposable Burner' });
+          continue;
+        }
+        const mx = await dohQuery(dom, 'MX');
+        if (!mx.length) {
+          rows.push({ email, status: 'UNDELIVERABLE_NO_MX', score: 10, provider: 'No MX Record' });
+          continue;
+        }
+        const isRole = ROLE.has(local);
+        rows.push({ email, status: isRole ? 'RISKY_ROLE_INBOX' : 'DELIVERABLE_MX_VALID', score: isRole ? 75 : 95, provider: classifyMx(mx) });
+      }
+      box.innerHTML = `
+        <table>
+          <thead><tr><th>Email</th><th>Status</th><th>Score</th><th>Mail Provider</th></tr></thead>
+          <tbody>${rows.map(r => `<tr><td><code>${r.email.replace(/</g,'&lt;')}</code></td><td><span class="badge ${r.score>=90?'badge-ok':r.score>=70?'badge-info':'badge-warn'}">${r.status}</span></td><td><strong>${r.score}</strong>/100</td><td>${r.provider}</td></tr>`).join('')}</tbody>
+        </table>
+        <div style="margin-top:12px;font-size:13px;color:var(--muted);">Need to clean 1,000–50,000 emails? <a href="https://apify.com/apexsignal/bulk-email-mx-verifier" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;">Run Bulk Email Verifier on Apify Cloud ($0.60/1k) &rarr;</a></div>
+      `;
+    }
+
+    runDomainScan();
+  </script>
+</body>
+</html>
